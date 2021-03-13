@@ -54,6 +54,16 @@ li {
 }
 
 ul {
+
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
+}
+ul.nav li{
+	list-style: none;
+	text-decoration: underline;
+	display: inline;
+	padding: 0 5px;
+}
+.nav a{
+	color: #827474;
 }

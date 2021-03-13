@@ -12,6 +12,12 @@ if (isset($_REQUEST['playlist'])) {
 	$files = array_merge(glob("songs/*.mp3"), glob("songs/*.txt"));
 }
 
+if (isset($_REQUEST['shuffle'])) {
+	if($_REQUEST['shuffle'] == "on"){
+		shuffle($files);
+	}
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -27,10 +33,13 @@ if (isset($_REQUEST['playlist'])) {
 
 			<h1>190M Music Playlist Viewer</h1>
 			<h2>Search Through Your Playlists and Music</h2>
-			<div><a href="/webpage/music.php">Home</a></div>
+			<div>
+				<ul class="nav">
+					<li><a href="/webpage/music.php">Home</a></li>
+					<li><a href="music.php?shuffle=on">Shuffle</a></li>
+				</ul>
+			</div>
 		</div>
-
-
 		<div id="listarea">
 			<ul id="musiclist">
 				<?php
@@ -56,7 +65,7 @@ if (isset($_REQUEST['playlist'])) {
 						}elseif ($pathinfo["extension"] == "txt"){
 							echo'
 							<li class="playlistitem">
-								<a href="music.php?playlist='.$pathinfo["basename"].'">'.$pathinfo["basename"].' </a> ('.$fSize.')
+								<a href="music.php?playlist='.$pathinfo["basename"].'">'.$pathinfo["basename"].' </a>
 							</li>';
 						}	
 					}

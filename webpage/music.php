@@ -35,15 +35,18 @@ if (isset($_REQUEST['playlist'])) {
 			<ul id="musiclist">
 				<?php
 					foreach ($files as $file){
+					
+						$pathinfo = pathinfo(trim($file));
 
-					$fSize = fileSize($file)."b";
+						$fSize = fileSize(trim($file))."b";
 
+					//	var_dump($fSize);
 						if($fSize > 1023){
 							$fSize = round($fSize / 1024 / 1024, 1);
 							$fSize = $fSize."mb";
 						}
 
-						$pathinfo = pathinfo($file);
+						
 
 						if($pathinfo["extension"] == "mp3"){
 							echo'
